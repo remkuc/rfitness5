@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Acceuil</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-color: rgb(17, 16, 16);
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+     
+    }
+
+    .content {
+      color: white;
+      margin: 40px 70px;
+      
+    }
+
+    /* Styles pour le menu principal */
+    .main-menu {
+      background-color: #333;
+      color: #fff;
+      width: 100%;
+      max-width: 320px;
+      position: fixed;
+      left: -100%;
+      top: 0;
+      bottom: 0; /* Le menu s'étend jusqu'au bas de la page */
+      padding: 20px;
+      transition: left 0.3s ease;
+      overflow-y: auto; /* Ajout d'un défilement en cas de contenu trop long */
+    }
+
+    .main-menu.active {
+      left: 0;
+    }
+
+    .main-menu h1 {
+      margin-top: 0;
+      color: white;
+    }
+
+    .main-menu ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .main-menu li {
+      margin-bottom: 10px;
+    }
+
+    .main-menu a {
+      color: #fff;
+      text-decoration: none;
+      display: block;
+    }
+
+    /* Styles pour le bouton "hamburger" */
+    .hamburger {
+      display: block;
+      width: 40px;
+      height: 40px;
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      cursor: pointer;
+      z-index: 1;
+    }
+
+    .hamburger span,
+    .hamburger span:before,
+    .hamburger span:after {
+      content: "";
+      display: block;
+      width: 30px;
+      height: 3px;
+      background-color: #333;
+      position: absolute;
+      left: 0;
+      transition: transform 0.3s ease;
+    }
+
+    .hamburger span:before {
+      top: -10px;
+    }
+
+    .hamburger span:after {
+      top: 10px;
+    }
+
+    /* Styles pour l'animation du bouton "hamburger" */
+    .hamburger.active span {
+      transform: rotate(45deg);
+    }
+
+    .hamburger.active span:before {
+      top: 0;
+      transform: rotate(90deg);
+    }
+
+    .hamburger.active span:after {
+      top: 0;
+      transform: rotate(90deg);
+    }
+
+    @media screen and (max-width: 480px) {
+      /* Styles spécifiques pour les appareils mobiles */
+      .main-menu {
+        padding: 10px;
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .hamburger {
+        top: 10px;
+        left: 10px;
+      }
+
+      .content {
+        margin: 10px;
+      }
+    }
+
+    .footer {
+      position: fixed;
+      bottom: 10px;
+      right: 10px;
+      color: rgb(66, 64, 64);
+      font-size: 14px;
+      text-align: right;
+    }
+  </style>
+</head>
+<body>
+  <div class="hamburger" onclick="toggleMenu()">
+    <span></span>
+  </div>
+
+  <div class="main-menu" id="menu">
+    <h1>Menu Principal</h1>
+    <ul>
+      <li><a href="page_fitness.html">Votre programme</a></li>
+      <li><a href="#">Votre bodyage</a></li>
+      <li><a href="page_nutriments.html">Nutritions</a></li> 
+      <li><a href="page_localisation.html">Votre activité</a></li>
+      <li><a href="page_bpm.html">Vos battements de coeurs</a></li>
+    </ul>
+  </div>
+
+  <div class="content">
+    <h1>Application Fitness</h1>
+    <p>Vous pouvez suivre ici toutes vos activités au fitness ainsi que faire vos programmes</p>
+  </div>
+
+  <script>
+    function toggleMenu() {
+      var menu = document.getElementById("menu");
+      menu.classList.toggle("active");
+    }
+  </script>
+
+  <div class="footer">
+    <p>Rémy Kuchler</p>
+    <p>1.0</p>
+  </div>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page Activité</title>
+  <style>
+body {
+  background-color: #333;
+  text-align: center; /* Centre les éléments horizontalement */
+}
+
+h1 {
+  color: white;
+}
+
+button {
+  margin: 10px; /* Ajoutez un espace autour des boutons si nécessaire */
+}
+
+
+  </style>
+</head>
+<body>
+  <h1>Votre Activité</h1>
+
+  <!-- Bouton de configuration -->
+  <button id="configure-button">Configurer la map</button>
+  <button id="voir_activite" >Voir mon activitée</button>
+
+  <script>
+    // Vous pouvez ajouter ici un gestionnaire d'événements JavaScript pour le bouton de configuration.
+    document.getElementById("configure-button").addEventListener("click", function() {
+      // Redirigez l'utilisateur vers la page de configuration de l'activité.
+      window.location.href = "test_map.html";
+    });
+  </script>
+</body>
+</html>

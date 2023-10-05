@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Commentaires pour les jours de la semaine</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 400px;
+            margin: 0 auto; 
+            background-color: #333;
+        }
+
+
+        h1 {
+            text-align: center;
+            color: white;
+            font-size: 4em;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        li span {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: rgb(187, 167, 167); 
+        }
+
+        textarea {
+            width: 800px;
+            height: 160px;
+            background-color: #4d4747; 
+            border: 1px solid #ccc; 
+            padding: 5px; 
+            resize: vertical; 
+            margin-left: -200px;
+            color: white;
+        }
+
+        button {
+            display: block;
+            margin: 20px auto;
+           
+        }
+
+        .delete-button {
+            color: red;
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            float: right;
+        }
+
+        .delete-button:focus {
+            outline: none;
+            
+        }
+
+        ::placeholder{
+            font-size: 2em;
+            margin-left: -100px;
+        }
+
+        #enregistrer {
+            width: 70%; 
+            font-size: 2em; 
+            padding: 15px; 
+            color: #333;
+        }
+
+      
+    </style>
+</head>
+
+<body>
+    <h1>Votre programme de la semaine </h1>
+    <ul>
+        <li>
+            <span>Lundi:</span>
+            <button class="delete-button" onclick="clearComment('comment-lundi')">&times;</button>
+            <textarea id="comment-lundi" placeholder="Ajouter votre programme pour lundi..."></textarea>
+        </li>
+        <li>
+            <span>Mardi:</span>
+            <button class="delete-button" onclick="clearComment('comment-mardi')">&times;</button>
+            <textarea id="comment-mardi" placeholder="Ajouter votre programme pour mardi..."></textarea>
+        </li>
+        <li>
+            <span>Mercredi:</span>
+            <button class="delete-button" onclick="clearComment('comment-mercredi')">&times;</button>
+            <textarea id="comment-mercredi" placeholder="Ajouter votre programme pour mercredi..."></textarea>
+        </li>
+        <li>
+            <span>Jeudi:</span>
+            <button class="delete-button" onclick="clearComment('comment-jeudi')">&times;</button>
+            <textarea id="comment-jeudi" placeholder="Ajouter votre programme pour jeudi..."></textarea>
+        </li>
+        <li>
+            <span>Vendredi:</span>
+            <button class="delete-button" onclick="clearComment('comment-vendredi')">&times;</button>
+            <textarea id="comment-vendredi" placeholder="Ajouter votre programme pour vendredi..."></textarea>
+        </li>
+        <li>
+            <span>Samedi:</span>
+            <button class="delete-button" onclick="clearComment('comment-samedi')">&times;</button>
+            <textarea id="comment-samedi" placeholder="Ajouter votre programme pour samedi..."></textarea>
+        </li>
+        <li>
+            <span>Dimanche:</span>
+            <button class="delete-button" onclick="clearComment('comment-dimanche')">&times;</button>
+            <textarea id="comment-dimanche" placeholder="Ajouter votre programme pour dimanche..."></textarea>
+        </li>
+    </ul>
+    <button id="enregistrer" onclick="saveComments()">Enregistrer les commentaires</button>
+
+    <script>
+        function saveComments() {
+            const comments = {
+                lundi: document.getElementById('comment-lundi').value,
+                mardi: document.getElementById('comment-mardi').value,
+                mercredi: document.getElementById('comment-mercredi').value,
+                jeudi: document.getElementById('comment-jeudi').value,
+                vendredi: document.getElementById('comment-vendredi').value,
+                samedi: document.getElementById('comment-samedi').value,
+                dimanche: document.getElementById('comment-dimanche').value
+            };
+            localStorage.setItem('comments', JSON.stringify(comments));
+            alert('Commentaires enregistrés avec succès!');
+        }
+
+        function loadComments() {
+            const comments = JSON.parse(localStorage.getItem('comments'));
+            if (comments) {
+                document.getElementById('comment-lundi').value = comments.lundi || '';
+                document.getElementById('comment-mardi').value = comments.mardi || '';
+                document.getElementById('comment-mercredi').value = comments.mercredi || '';
+                document.getElementById('comment-jeudi').value = comments.jeudi || '';
+                document.getElementById('comment-vendredi').value = comments.vendredi || '';
+                document.getElementById('comment-samedi').value = comments.samedi || '';
+                document.getElementById('comment-dimanche').value = comments.dimanche || '';
+            }
+        }
+
+        function clearComment(commentId) {
+            document.getElementById(commentId).value = '';
+        }
+
+        window.onload = loadComments;
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calcul des Nutriments</title>
+    <link rel="stylesheet" href="css_fit_nutrition.css">
+</head>
+<body>
+    <h1>Calcul des Nutriments</h1>
+
+    <div id="choisir_aliment">
+        <label id="text_choisir_aliment">Choisissez un aliment :</label>
+        <select id="aliment">
+            <option value="banane">Banane</option>
+            <option value="fraise">Fraise</option>
+            <option value="mirtille">Myrtille</option>
+            <option value="framboise">Framboise</option>
+            <option value="mangue">Mangue</option>
+            <option value="ananas">Ananas</option>
+            <option value="kiwi">Kiwi</option>
+            <option value="pomme">Pomme</option>
+            <option value="poire">Poire</option>
+            <option value="peche">Pêche</option>
+            <option value="orange">Orange</option>
+        </select>
+        
+    </div>
+
+    <div id="choisir_quantite"> 
+        <label id="text_quantite" for="quantite">Quantité en grammes :</label>
+        <input type="number" id="quantite">
+    </div>
+
+    <button onclick="ajouterAliment()">Ajouter</button>
+    <button onclick="afficherResultat()">Afficher le résultat</button>
+
+    <div id="resultat">
+    </div>
+
+    <script>
+        var liste_aliments = [];
+        var liste_quantite = [];
+
+        function ajouterAliment() {
+            var alimentInput = document.getElementById("aliment");
+            var quantiteInput = document.getElementById("quantite");
+
+            var aliment = alimentInput.value;
+            var quantite = parseFloat(quantiteInput.value);
+
+            if (aliment === "banane") {
+                quantite = isNaN(quantite) ? 0 : quantite; // Si la quantité n'est pas un nombre, utilisez 0
+                liste_quantite.push(quantite);
+            } else {
+                quantite = isNaN(quantite) ? 0 : quantite; // Si la quantité n'est pas un nombre, utilisez 0
+                liste_quantite.push(quantite);
+            }
+
+            if (liste_aliments.includes(aliment)) {
+                alert("Cet élément est déjà dans la liste");
+            } else {
+                liste_aliments.push(aliment);
+            }
+        }
+
+        function afficherResultat() {
+            var kcal = 0;
+            var proteine = 0;
+            var vitamine_c = 0;
+            var vitamine_b6 = 0;
+            var calcium = 0;
+            var magnesium = 0;
+
+            for (var i = 0; i < liste_aliments.length; i++) {
+                var aliment = liste_aliments[i];
+                var quantite = liste_quantite[i];
+
+                if (aliment === "banane") {
+                    kcal += 105/100 * quantite;
+                    proteine += 1/100 * quantite;
+                    vitamine_c += 10/100 * quantite;
+                    vitamine_b6 += 0.4/100 * quantite;
+                    calcium += 6/100 * quantite;
+                    magnesium += 32/100 * quantite;
+                } else if (aliment === "fraise") {
+                    kcal += 32/100 * quantite;
+                    proteine += 0.7/100 * quantite;
+                    vitamine_c += 58.8/100 * quantite;
+                    vitamine_b6 += 0.1/100 * quantite;
+                    calcium += 16/100 * quantite;
+                    magnesium += 13/100 * quantite;
+                }
+                // Ajoutez d'autres conditions pour les autres aliments
+            }
+
+            var resultatDiv = document.getElementById("resultat");
+            resultatDiv.innerHTML = "<p>Il y a</p>" +
+                "<p>" + kcal + " kcal</p>" +
+                "<p>" + proteine + " g protéines</p>" +
+                "<p>" + vitamine_c + " mg vitamines C</p>" +
+                "<p>" + vitamine_b6 + " mg vitamines B6</p>" +
+                "<p>" + calcium + " mg calcium</p>" +
+                "<p>" + magnesium + " mg magnésium</p>";
+        }
+    </script>
+</body>
+</html>

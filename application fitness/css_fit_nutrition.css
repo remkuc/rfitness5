@@ -1,0 +1,42 @@
+body{
+    background-color: rgb(17, 16, 16);
+}
+
+h1{
+    color: rgb(148, 190, 173);
+    text-align: center;
+    font-size: 4em;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+#choisir_aliment{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    
+}
+
+#text_choisir_aliment{
+    font-size: 2em;
+}
+
+#choisir_quantite{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+#text_quantite{
+    font-size: 2em;
+}
+
+/* Styles pour les boutons */
+button {
+    display: block; /* Assurez-vous que chaque bouton occupe toute la largeur */
+    margin: 10px auto; /* Centrez les boutons horizontalement */
+    font-size: 1.5em; /* Ajustez la taille de police des boutons */
+  }
+  
+

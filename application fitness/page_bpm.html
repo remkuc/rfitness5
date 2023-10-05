@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bouton avec Titre</title>
+<style>
+  body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #333;
+  }
+  h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: white;
+    font-size: xx-large;
+    margin-left: 10px;
+    text-align: center;
+  }
+  button {
+    padding: 10px 20px;
+    font-size: 16px;
+  }
+
+  #timer {
+    font-size: larger;
+    color: white;
+  }
+
+  #actionButton {
+    margin-top: 20px;
+    display: none; 
+  }
+</style>
+</head>
+<body>
+  <h1>Calculer votre rythme cardiaque</h1>
+  <button id="startButton">Démarrer</button>
+  <div id="timer" style="display: none;"></div> 
+  <button id="actionButton">Cliques à chaque battements</button> 
+
+  <script>
+    var startButton = document.getElementById("startButton");
+    var actionButton = document.getElementById("actionButton");
+    var timerDisplay = document.getElementById("timer");
+    var clickCount = 0; 
+    var clickTracking = false; 
+
+    startButton.addEventListener("click", function() {
+      startButton.style.display = "none"; 
+      timerDisplay.style.display = "block"; 
+
+      var countdown = 3; 
+
+      var countdownInterval = setInterval(function() {
+        timerDisplay.innerText = countdown;
+        countdown--;
+
+        if (countdown < 0) {
+          clearInterval(countdownInterval);
+          timerDisplay.innerText = "Chrono démarré !";
+          actionButton.style.display = "block"; 
+          clickTracking = true; 
+          setTimeout(function() {
+            var multipliedClicks = clickCount * 4;
+            alert("Vos battements de coeurs par minutes : " + multipliedClicks);
+            clickTracking = false; 
+
+            
+            timerDisplay.style.display = "none";
+            actionButton.style.display = "none";
+            startButton.style.display = "block";
+            clickCount = 0;
+          }, 15000); 
+        }
+      }, 1000); 
+    });
+
+    actionButton.addEventListener("click", function() {
+      if (clickTracking) {
+        clickCount++; 
+      }
+    });
+  </script>
+</body>
+</html>

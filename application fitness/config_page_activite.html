@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Confirmation de Sauvegarde</title>
+</head>
+<body>
+    <h1>Confirmation de Sauvegarde</h1>
+    
+    <p>Voulez-vous sauvegarder les coordonnées GPS du marqueur ?</p>
+
+    <button id="sauvegarder">Oui</button>
+    <button id="annuler">Non</button>
+
+    <script>
+        // Fonction pour sauvegarder les coordonnées GPS
+        function sauvegarderCoordonneesGPS() {
+            // Vous pouvez ajouter ici le code pour sauvegarder les coordonnées GPS.
+            alert("Coordonnées GPS sauvegardées avec succès !");
+        }
+
+        // Gestionnaire d'événement pour le bouton "Oui"
+        document.getElementById("sauvegarder").addEventListener("click", function() {
+            sauvegarderCoordonneesGPS();
+            // Redirigez l'utilisateur vers la page précédente (ou toute autre page de votre choix).
+            window.history.back();
+        });
+
+        // Gestionnaire d'événement pour le bouton "Non"
+        document.getElementById("annuler").addEventListener("click", function() {
+            // Redirigez l'utilisateur vers la page précédente (ou toute autre page de votre choix).
+            window.history.back();
+        });
+    </script>
+</body>
+</html>
